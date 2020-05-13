@@ -11,7 +11,7 @@ jobs:
     # machine option runs your jobs in a dedicated, ephemeral VM that has the following specifications:
     machine: true
     steps:
-     - checkout
+      - checkout
       # Install node
       - node/install
       # Install npm
