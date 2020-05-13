@@ -20,7 +20,6 @@ jobs:
       - node/with-cache:
           steps:
             - run: 
-                - checkout
                 name: Install application dependencies
                 command: npm install
           # Save cache
