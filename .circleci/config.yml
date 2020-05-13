@@ -33,11 +33,11 @@ jobs:
       - checkout
       - gcr/gcr-auth
       - gcr/build-image:
-          image: circle-gke
-          tag: "v2"
+          image: testing
+          tag: "latest"
       - gcr/push-image:
-          image: circle-gke
-          tag: "v2"
+          image: testing
+          tag: "latest"
 
     
   deploy:
@@ -50,9 +50,9 @@ jobs:
       - gcp-gke/init
       # Update a deployment's Docker image.
       - gcp-gke/rollout-image:
-          deployment: circle-ci-cluster
+          deployment: central
           container: dominic-backend
-          image: gcr.io/circle-ci-demo/circle-gke:v2
+          image: us.gcr.io/sequislife-pilot/testing:latest
 
 workflows:
   build_update_deploy:
