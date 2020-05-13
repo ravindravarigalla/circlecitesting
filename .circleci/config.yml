@@ -19,7 +19,8 @@ jobs:
       # Download and cache dependencies
       - node/with-cache:
           steps:
-            - run:
+            - run: 
+                - checkout
                 name: Install application dependencies
                 command: npm install
           # Save cache
