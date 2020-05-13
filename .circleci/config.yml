@@ -12,11 +12,10 @@ jobs:
     machine: true
     steps:
       - checkout
-      # Install node
-      - node/install
-      # Install npm
-      - node/install-npm
-      # Download and cache dependencies
+      - node/install:
+          install-yarn: true
+          node-version: latest
+      - run: node --version
       - node/with-cache:
           steps:
             - run: 
