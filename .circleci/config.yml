@@ -1,19 +1,26 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@2.1.0
+  node: circleci/node@1.0.1
   gcp-gke: circleci/gcp-gke@0.1.0
   gcr: circleci/gcp-gcr@0.0.2
 jobs:
-  install-node-example:
-    docker:
-      - image: 'cimg/base:stable'
+  build:
+    description: Install npm
+    # machine option runs your jobs in a dedicated, ephemeral VM that has the following specifications:
+    machine: true
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
-          node-version: latest
-      - run: node --version
+      # Install node
+      - node/install
+      # Install npm
+      - node/install-npm
+      # Download and cache dependencies
+      - node/with-cache:
+          steps:
+            - run:
+                name: Install application dependencies
+                command: npm install
           # Save cache
           cache-key: package.json
           # Ignore non-checksum cache hits
