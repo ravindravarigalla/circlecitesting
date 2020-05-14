@@ -18,6 +18,7 @@ jobs:
       - node/with-cache:
           steps:
             - run:
+                command: npm -v
                 name: Install application dependencies
                 command: npm install
           # Save cache
