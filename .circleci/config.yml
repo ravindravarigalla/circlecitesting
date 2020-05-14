@@ -1,5 +1,4 @@
 version: 2.1
-
 orbs:
   node: circleci/node@1.0.1
   gcp-gke: circleci/gcp-gke@0.1.0
@@ -33,11 +32,10 @@ jobs:
       - gcr/gcr-auth
       - gcr/build-image:
           image: testing
-          tag: "latest"
+          tag: "latest" #Change version number e.g to 'v3' when updating application
       - gcr/push-image:
           image: testing
-          tag: "latest"
-
+          tag: "latest" #Change version number e.g to 'v3' when updating application
     
   deploy:
     description: Deploy application to Google Kubernetes Engine
@@ -47,12 +45,11 @@ jobs:
       - gcp-gke/install
       # Initialize the `gcloud` CLI.
       - gcp-gke/init
-      # Update a deployment's Docker image.
+      # Update a deployment Docker image.
       - gcp-gke/rollout-image:
-          deployment: central
+          deployment: circle-ci-cluster
           container: dominic-backend
-          image: us.gcr.io/sequislife-pilot/testing:latest
-
+          image: gcr.io/sequeslife/testing:latest # change version when updating
 workflows:
   build_update_deploy:
     jobs:
