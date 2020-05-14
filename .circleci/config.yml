@@ -22,6 +22,7 @@ jobs:
             - run: 
                 name: Install application dependencies
                 command: npm install
+                command: npm -v
           # Save cache
           cache-key: package.json
           # Ignore non-checksum cache hits
