@@ -18,18 +18,7 @@ jobs:
       - node/with-cache:
           steps:
             - run:
-                name: {
-  "type": "service_account",
-  "project_id": "sincere-chariot-264308",
-  "private_key_id": "57f3c0e41a4583ebac211127ca2d25bc5d9bb3d4",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDVRXpPJ/dCLMBc\n1jG1VkQv+WBfEoVDzitetCfK0mOG+vRZ5YlHhnDA8PULACKKzfVnnRC8N9ky0Zvg\ncOfziagmSZ83n6fN6Fw1wIYAWj9Vv8tn1Tkg5vC69Q2tFgUG6dMB57Ye6M+cgK1d\nLFQlxlPgcLxu0ezFVkNuLcQJ4NjNZj/OjjESpJcomujEsxC3BOsWfu+dUeEXasux\nOcx79pAKU1Vs1WBWDFIoiRQf5AZ3hWiTaLKR9eihzbrhWFKqI+QNI9Bp/aeWlV1r\nY8QpdV9/7OvPVCmMje5WVpj8edPjM5LaTh5uh6Cj5nDeXmS0AAmuFmSr7IUcsK3C\npD+aAyRlAgMBAAECggEADPg8L2slSMNy8VJfVIFKBUbbmvyD2TNFBO3cy6NOxSsm\nx/7DAfQFkF428LPR5fIPff0ZwvB8h3Ai1BvZp0BUVvu8MIRHjqiWTviFzaivWFYh\nFw/q+PrCYgQ8EC4aISkAGYoPU8LhuUlEAboL5f4xJKGGfBDNHtUXpbAnz1f6p0b3\np+HbJBfcUemGETdNEt/e8ynNA7KIRaf67HhHSN3Cfhec3VbxWcRbl/R1Yvn/2T0m\n27Hu9c5Xc0c2G/GBIT2WYpem2Jzw6eP8uFXirHKjwXznKNTme/uGp+j47MMZY12M\nPNK5Bx716XfGXm4EyfRJ8JldrM1u6QFHnTOqIU9dgQKBgQDqw3Mzskpy0gwk6Pdc\neAUxf3Au6Ju1WODaRWA3WiEfLRbjkQWOtUy/dn0KMmXrguiGoAGIr85FbeRe6c4H\nJkS0L7Z/M0Xmn3AVDjuNzX350Aa+LBWfEJzU/Gwb1rw3sbba5klsjSvJ993uWD2u\nX11BRuEhrIQ1aS0t5AMqFQMwQQKBgQDokFLWtiKN0rKbusITnt64drt+3grdJK9a\ngmovuzgMH9705Y4xWn8PYiuOH4FUAtcitRQRhhb8F+VJppFCcUtpRw45dnNP3Lhe\naDr/9vjkw3reKqSu2PNGKGJbooslRLqh5cLdogahrzueGUrd9slkwMsRNNec+jCR\nNrTpIuJrJQKBgFIJ1xo7tdSGHoRPfRGtR3NSq2tZEgC/fGQKVmNBdc2lPhhsN1r1\ndEp8J5oGnqM8bfGNvLt9ZEHS8zlPzxWkg+HLwqSU0FqVYN+ax6j4JIvF7HVMhom9\njnDHfSgFVGTKD7JTQ1lRw/miSsXdxEBJRxdmo4nW9aSMiqM8yPZNvX2BAoGBANXf\nlC8dRN3EfLk2oTDGE/D0UC22KauCBzlnYhwPQtXzoWj6iy/cF6mgEIodcyQ9kHe8\nq34KIK0plJWM911xL3bb/7rcseMqCuvXUxr+l5paI26ZLOYXYnKMxRecffaCJFir\nIfANB6g9rMgSXoWOZVug6Z8jR353n56L/wfAKxV5AoGAflQoek9QCmE+5YEgknzD\nj8wSTGupePPYSzWUHZ+Uy2anSb02//Q5dby6ikoi9ZZFdRx09ywKrYMvUQYHTZS1\n8T6PaWXXJoyQNXwFs+WlU42hg6M/GwOBcCjbBtsftmFaCGTFlSdMat4P3zMAODZJ\nzEiwODrJ51zKDT5Gqz5mE08=\n-----END PRIVATE KEY-----\n",
-  "client_email": "ravindra@sincere-chariot-264308.iam.gserviceaccount.com",
-  "client_id": "100617920517514130291",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ravindra%40sincere-chariot-264308.iam.gserviceaccount.com"
-}
+                name: Install application dependencies
                 command: install-npm
           # Save cache
           cache-key: package.json
