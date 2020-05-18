@@ -32,10 +32,10 @@ jobs:
       - gcr/gcr-auth
       - gcr/build-image:
           image: testing
-          tag: "latest" #Change version number e.g to 'v3' when updating application
+          tag: "v1" #Change version number e.g to 'v3' when updating application
       - gcr/push-image:
           image: testing
-          tag: "latest" #Change version number e.g to 'v3' when updating application
+          tag: "v1" #Change version number e.g to 'v3' when updating application
     
   deploy:
     description: Deploy application to Google Kubernetes Engine
