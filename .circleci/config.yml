@@ -14,9 +14,9 @@ jobs:
           node-version: latest
       - run: node --version
           # Save cache
-          cache-key: package.json
-          # Ignore non-checksum cache hits
-          use-strict-cache: true
+     cache-key: package.json
+     # Ignore non-checksum cache hits
+     use-strict-cache: true
   Build-Push-Image-Docker:
     description: Build and push image to Google Container Registry
     machine: true
