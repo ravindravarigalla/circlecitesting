@@ -10,27 +10,16 @@ jobs:
     machine: true
     steps:
       - checkout
-         description: >
-            Install/upgrade the NPM package manager. Requires an existing installation of
-            Node.js; if none exists, use the orb's `install` command instead.
-    parameters:
-    npm-version:
-    default: latest
-    description: |
-      Pick a version of NPM to install: https://nodejs.org/en/download/releases
-    type: string
-    steps:
-      - run:
-          command: >
-           if [[ $EUID == 0 ]]; then export SUDO=""; else export SUDO="sudo"; fi
-
-
-           $SUDO npm install -g npm@<<parameters.npm-version>> || npm install -g
-           npm@"<<parameters.npm-version>>"
-        name: Install NPM
-        - run:
-           command: npm -v
-           name: Verify NPM version
+      # Install node
+      - node/install
+      # Install npm
+      - node/install-npm
+      # Download and cache dependencies
+      - node/with-cache:
+          steps:
+            - run:
+                name: Install application dependencies
+                command: npm install
           # Save cache
           cache-key: package.json
           # Ignore non-checksum cache hits
@@ -42,11 +31,11 @@ jobs:
       - checkout
       - gcr/gcr-auth
       - gcr/build-image:
-          image: testing
-          tag: "v1" #Change version number e.g to 'v3' when updating application
+          image: circle-gke
+          tag: "v2" #Change version number e.g to 'v3' when updating application
       - gcr/push-image:
-          image: testing
-          tag: "v1" #Change version number e.g to 'v3' when updating application
+          image: circle-gke
+          tag: "v2" #Change version number e.g to 'v3' when updating application
     
   deploy:
     description: Deploy application to Google Kubernetes Engine
@@ -60,7 +49,7 @@ jobs:
       - gcp-gke/rollout-image:
           deployment: circle-ci-cluster
           container: dominic-backend
-          image: gcr.io/sequeslife/testing:latest # change version when updating
+          image: gcr.io/circle-ci-demo/circle-gke:v2 # change version when updating
 workflows:
   build_update_deploy:
     jobs:
